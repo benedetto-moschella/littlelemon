@@ -97,81 +97,83 @@ struct Menu: View {
                 
             FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptors()) { (dishes: [Dish]) in
                 
-                List {
+                    List {
                         
-                    ForEach(dishes, id: \.self) { dish in
-                        if (dish.title! == "Bruschetta") {
-                            VStack {
-                                Text("Bruschetta").font(Font.custom("Karla-Bold", size: 18)).padding(.trailing, 300).frame(width: 450)
-                                HStack {
-                                    VStack {
-                                        Text("Oven-baked bruschetta stuffed with tomatos and herbs.").font(Font.custom("Karla-Regular", size: 16)).padding(.trailing, 10).frame(width: 284)
-                                        Text("$10").font(Font.custom("Karla-Medium", size: 16)).padding(.trailing, 255).frame(width: 300, height: 10)
-                                    }
-                                    Spacer(minLength: 26)
-                                    Image("Bruschetta").resizable().scaledToFill().frame(width: 90, height: 90).clipped()
-                                }.frame(width: 390)
+                        ForEach(dishes, id: \.self) { dish in
+                            if (dish.title! == "Bruschetta") {
+                                VStack {
+                                    Text("Bruschetta").font(Font.custom("Karla-Bold", size: 18)).padding(.trailing, 300).frame(width: 450)
+                                    HStack {
+                                        VStack {
+                                            Text("Oven-baked bruschetta stuffed with tomatos and herbs.").font(Font.custom("Karla-Regular", size: 16)).padding(.trailing, 10).frame(width: 284)
+                                            Text("$10").font(Font.custom("Karla-Medium", size: 16)).padding(.trailing, 255).frame(width: 300, height: 10)
+                                        }
+                                        Spacer(minLength: 26)
+                                        Image("Bruschetta").resizable().scaledToFill().frame(width: 90, height: 90).clipped()
+                                    }.frame(width: 390)
+                                }
+                            }
+                            if (dish.title! == "Pasta") {
+                                VStack {
+                                    Text("Pasta").font(Font.custom("Karla-Bold", size: 18)).padding(.trailing, 350).frame(width: 450)
+                                    HStack {
+                                        VStack {
+                                            Text("Penne with fried aubergines, cherry tomatoes, tomato sauce, fresh chilli, garlic, basil & salted ricotta cheese.").font(Font.custom("Karla-Regular", size: 16)).padding(.trailing, 10).frame(width: 284)
+                                            Text("$10").font(Font.custom("Karla-Medium", size: 16)).padding(.trailing, 255).frame(width: 300, height: 10)
+                                        }
+                                        Spacer(minLength: 26)
+                                        Image("Pasta").resizable().scaledToFill().frame(width: 90, height: 90).clipped()
+                                    }.frame(width: 390)
+                                }
+                            }
+                            if (dish.title! == "Grilled Fish") {
+                                VStack {
+                                    Text("Grilled Fish").font(Font.custom("Karla-Bold", size: 18)).padding(.trailing, 302).frame(width: 400)
+                                    HStack {
+                                        VStack {
+                                            Text("Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.").font(Font.custom("Karla-Regular", size: 16)).padding(.trailing, 0).frame(width: 284)
+                                            Text("$10").font(Font.custom("Karla-Medium", size: 16)).padding(.trailing, 255).frame(width: 300, height: 10)
+                                        }
+                                        Spacer(minLength: 26)
+                                        Image("Grilled fish").resizable().scaledToFill().frame(width: 90, height: 90).clipped()
+                                    }.frame(width: 390)
+                                }
+                            }
+                            if (dish.title! == "Lemon Desert") {
+                                VStack {
+                                    Text("Lemon Dessert").font(Font.custom("Karla-Bold", size: 18)).padding(.trailing, 270).frame(width: 450)
+                                    HStack {
+                                        VStack {
+                                            Text("Traditional homemade Italian Lemon Ricotta Cake.").font(Font.custom("Karla-Regular", size: 16)).padding(.trailing, 60).frame(width: 284)
+                                            Text("$10").font(Font.custom("Karla-Medium", size: 16)).padding(.trailing, 255).frame(width: 300, height: 10)
+                                        }
+                                        Spacer(minLength: 26)
+                                        Image("Lemon dessert").resizable().scaledToFill().frame(width: 90, height: 90).clipped()
+                                    }.frame(width: 390)
+                                }
+                            }
+                            if (dish.title! == "Greek Salad") {
+                                VStack {
+                                    Text("Greek Salad").font(Font.custom("Karla-Bold", size: 18)).padding(.trailing, 299).frame(width: 430)
+                                    HStack {
+                                        VStack {
+                                            Text("The famous greek salad of crispy lettuce, peppers, olives, our Chicago.").font(Font.custom("Karla-Regular", size: 16)).padding(.trailing, 20).frame(width: 284)
+                                            Text("$10").font(Font.custom("Karla-Medium", size: 16)).padding(.trailing, 255).frame(width: 300, height: 10)
+                                        }
+                                        Spacer(minLength: 26)
+                                        Image("Greek salad").resizable().scaledToFill().frame(width: 90, height: 90).clipped()
+                                    }.frame(width: 390)
+                                }
                             }
                         }
-                        if (dish.title! == "Pasta") {
-                            VStack {
-                                Text("Pasta").font(Font.custom("Karla-Bold", size: 18)).padding(.trailing, 350).frame(width: 450)
-                                HStack {
-                                    VStack {
-                                        Text("Penne with fried aubergines, cherry tomatoes, tomato sauce, fresh chilli, garlic, basil & salted ricotta cheese.").font(Font.custom("Karla-Regular", size: 16)).padding(.trailing, 10).frame(width: 284)
-                                        Text("$10").font(Font.custom("Karla-Medium", size: 16)).padding(.trailing, 255).frame(width: 300, height: 10)
-                                    }
-                                    Spacer(minLength: 26)
-                                    Image("Pasta").resizable().scaledToFill().frame(width: 90, height: 90).clipped()
-                                }.frame(width: 390)
-                            }
-                        }
-                        if (dish.title! == "Grilled Fish") {
-                            VStack {
-                                Text("Grilled Fish").font(Font.custom("Karla-Bold", size: 18)).padding(.trailing, 302).frame(width: 400)
-                                HStack {
-                                    VStack {
-                                        Text("Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.").font(Font.custom("Karla-Regular", size: 16)).padding(.trailing, 0).frame(width: 284)
-                                        Text("$10").font(Font.custom("Karla-Medium", size: 16)).padding(.trailing, 255).frame(width: 300, height: 10)
-                                    }
-                                    Spacer(minLength: 26)
-                                    Image("Grilled fish").resizable().scaledToFill().frame(width: 90, height: 90).clipped()
-                                }.frame(width: 390)
-                            }
-                        }
-                        if (dish.title! == "Lemon Desert") {
-                            VStack {
-                                Text("Lemon Dessert").font(Font.custom("Karla-Bold", size: 18)).padding(.trailing, 270).frame(width: 450)
-                                HStack {
-                                    VStack {
-                                        Text("Traditional homemade Italian Lemon Ricotta Cake.").font(Font.custom("Karla-Regular", size: 16)).padding(.trailing, 60).frame(width: 284)
-                                        Text("$10").font(Font.custom("Karla-Medium", size: 16)).padding(.trailing, 255).frame(width: 300, height: 10)
-                                    }
-                                    Spacer(minLength: 26)
-                                    Image("Lemon dessert").resizable().scaledToFill().frame(width: 90, height: 90).clipped()
-                                }.frame(width: 390)
-                            }
-                        }
-                        if (dish.title! == "Greek Salad") {
-                            VStack {
-                                Text("Greek Salad").font(Font.custom("Karla-Bold", size: 18)).padding(.trailing, 299).frame(width: 430)
-                                HStack {
-                                    VStack {
-                                        Text("The famous greek salad of crispy lettuce, peppers, olives, our Chicago.").font(Font.custom("Karla-Regular", size: 16)).padding(.trailing, 20).frame(width: 284)
-                                        Text("$10").font(Font.custom("Karla-Medium", size: 16)).padding(.trailing, 255).frame(width: 300, height: 10)
-                                    }
-                                    Spacer(minLength: 26)
-                                    Image("Greek salad").resizable().scaledToFill().frame(width: 90, height: 90).clipped()
-                                }.frame(width: 390)
-                            }
-                        }
-                    }
-                        }.listStyle(PlainListStyle()).frame(width: 400, height: 439, alignment: .top).padding(.top, 0)
-                    
+                    }.listStyle(PlainListStyle()).frame(width: 400, height: 439, alignment: .top).padding(.top, 0)
+                
                 }
                 
                     
-            }.onAppear(){getMenuData()}.toolbar {
+            }.onAppear(){if (d==0) {getMenuData()
+                d = 1}
+            }.toolbar {
                 
                 
                 
