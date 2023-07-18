@@ -11,12 +11,12 @@ import SwiftUI
 struct Little_LemonApp: App {
     var body: some Scene {
         WindowGroup {
-            if (UserDefaults.standard.bool(forKey: kisLoggedOut)) {
-                Onboarding1()
-            } else {
+            if (UserDefaults.standard.bool(forKey: kIsLoggedIn)) {
                 Home()
+                
+            }else {
+                Onboarding()
             }
-            
         }
     }
 }

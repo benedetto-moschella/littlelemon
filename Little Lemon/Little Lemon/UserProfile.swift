@@ -7,25 +7,26 @@
 
 import SwiftUI
 
-let firstName = UserDefaults.standard.string(forKey: kFirstName)
-let lastName = UserDefaults.standard.string(forKey: kLastName)
-let email = UserDefaults.standard.string(forKey: kEmail)
-let phoneNumber = UserDefaults.standard.string(forKey: kPhoneNumber)
-let orderStatuses = UserDefaults.standard.bool(forKey: korderStatuses)
-let passwordChanges = UserDefaults.standard.bool(forKey: kPasswordChanges)
-let specialOffers = UserDefaults.standard.bool(forKey: kSpecialOffers)
-let newsletter = UserDefaults.standard.bool(forKey: kNewsletter)
-let kisLoggedOut = "kIsLoggedOut"
+var firstName = UserDefaults.standard.string(forKey: kFirstName)
+var lastName = UserDefaults.standard.string(forKey: kLastName)
+var email = UserDefaults.standard.string(forKey: kEmail)
+var phoneNumber = UserDefaults.standard.string(forKey: kPhoneNumber)
+var orderStatuses = UserDefaults.standard.bool(forKey: korderStatuses)
+var passwordChanges = UserDefaults.standard.bool(forKey: kPasswordChanges)
+var specialOffers = UserDefaults.standard.bool(forKey: kSpecialOffers)
+var newsletter = UserDefaults.standard.bool(forKey: kNewsletter)
+
 
 struct UserProfile: View {
-    
-    @State var isLoggedOut = false
+    @Environment(\.presentationMode) var presentation
+    @State var shouldRefresh = false
+    @State private var isLoggedOut = false
+
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: Onboarding1(), isActive: $isLoggedOut) {
-                    EmptyView()
-                }.transition(.move(edge: .trailing))
+                
+
                 VStack {
                     Spacer(minLength: 40)
                     Text("Personal information").font(Font.custom("Karla-Medium", size: 18)).frame(width: 395, height: 0,alignment: .leading)
@@ -128,11 +129,11 @@ struct UserProfile: View {
                 }
                 Spacer(minLength: 5)
                 Button("Logout") {
+                    
+                    UserDefaults.standard.set(false, forKey: kIsLoggedIn)
                     isLoggedOut = true
-                    UserDefaults.standard.set(false, forKey: kIsLoggedIn3)
-                    UserDefaults.standard.set(false, forKey: kIsLoggedIn2)
-                    UserDefaults.standard.set(false, forKey: kIsLoggedIn1)
-                    UserDefaults.standard.set(true, forKey: kisLoggedOut)
+                    
+                    
                 }.font(Font.custom("Karla-Medium", size: 18)).foregroundColor(.black)
                     .padding([.leading, .trailing], 165)
                     .padding([.top, .bottom], 12)
@@ -164,6 +165,8 @@ struct UserProfile: View {
                 Spacer(minLength: 10)
                 
                 
+            }.fullScreenCover(isPresented: $isLoggedOut) {
+                Onboarding().transition(.move(edge: .trailing))
             }.transition(.move(edge: .trailing))
             .toolbar {
                 
@@ -177,6 +180,40 @@ struct UserProfile: View {
             }.navigationViewStyle(StackNavigationViewStyle())    }.navigationBarBackButtonHidden(true)
 
     }
+    
+    func clearFields() {
+        
+    UserDefaults.standard.set(firstName, forKey: kFirstName)
+        
+    
+        
+    UserDefaults.standard.set(phoneNumber, forKey: kPhoneNumber)
+    
+    
+    UserDefaults.standard.set(lastName, forKey: kLastName)
+        
+    UserDefaults.standard.set(orderStatuses, forKey: korderStatuses)
+        
+    UserDefaults.standard.set(passwordChanges, forKey: kPasswordChanges)
+        
+    UserDefaults.standard.set(specialOffers, forKey: kSpecialOffers)
+       
+    UserDefaults.standard.set(newsletter, forKey: kNewsletter)
+        
+    UserDefaults.standard.set(email, forKey: kEmail)
+    }
+    
+    func refreshData() {
+        firstName = UserDefaults.standard.string(forKey: kFirstName)
+        lastName = UserDefaults.standard.string(forKey: kLastName)
+        email = UserDefaults.standard.string(forKey: kEmail)
+        phoneNumber = UserDefaults.standard.string(forKey: kPhoneNumber)
+        orderStatuses = UserDefaults.standard.bool(forKey: korderStatuses)
+        passwordChanges = UserDefaults.standard.bool(forKey: kPasswordChanges)
+        specialOffers = UserDefaults.standard.bool(forKey: kSpecialOffers)
+        newsletter = UserDefaults.standard.bool(forKey: kNewsletter)
+    }
+
 }
 
 struct UserProfile_Previews: PreviewProvider {
